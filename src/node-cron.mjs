@@ -1,5 +1,4 @@
 import ScheduledTask from './scheduled-task.mjs'
-import validation from './pattern-validation.mjs'
 import storage from './storage.mjs'
 
 /**
@@ -19,40 +18,11 @@ import storage from './storage.mjs'
  * @returns {ScheduledTask} The scheduled task.
  */
  export const schedule = function (expression, func, options) {
-    const task = createTask(expression, func, options);
+    if (typeof func !== 'function') throw 'callback function must be a function';
+
+    const task = new ScheduledTask(expression, func, options);
 
     storage.save(task);
 
     return task;
-}
-
-function createTask(expression, func, options) {
-    if (typeof func !== 'function') throw 'callback function must be a function';
-
-    return new ScheduledTask(expression, func, options);
-}
-
-/**
- * Check if a cron expression is valid.
- *
- * @param {string} expression The cron expression.
- * @returns {boolean} Whether the expression is valid or not.
- */
-export const validate = function validate(expression) {
-    try {
-        validation(expression);
-
-        return true;
-    } catch (_) {
-        return false;
-    }
-}
-
-/**
- * Gets the scheduled tasks.
- *
- * @returns {ScheduledTask[]} The scheduled tasks.
- */
- export const getTasks = function getTasks() {
-    return storage.getTasks();
 }

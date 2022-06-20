@@ -1,5 +1,3 @@
-import monthNamesConversion from './month-names-conversion.mjs'
-import weekDayNamesConversion from './week-day-names-conversion.mjs';
 import convertAsterisksToRanges from './asterisk-to-range-conversion.mjs'
 import convertRanges from './range-conversion.mjs'
 import convertSteps from './step-values-conversion.mjs'
@@ -49,8 +47,6 @@ export default (() => {
     function interprete(expression){
         let expressions = removeSpaces(expression).split(' ');
         expressions = appendSeccondExpression(expressions);
-        expressions[4] = monthNamesConversion(expressions[4]);
-        expressions[5] = weekDayNamesConversion(expressions[5]);
         expressions = convertAsterisksToRanges(expressions);
         expressions = convertRanges(expressions);
         expressions = convertSteps(expressions);
