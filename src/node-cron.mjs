@@ -1,5 +1,4 @@
 import ScheduledTask from './scheduled-task.mjs'
-import BackgroundScheduledTask from './background-scheduled-task/index.mjs'
 import validation from './pattern-validation.mjs'
 import storage from './storage.mjs'
 
@@ -28,8 +27,7 @@ import storage from './storage.mjs'
 }
 
 function createTask(expression, func, options) {
-    if (typeof func === 'string')
-        return new BackgroundScheduledTask(expression, func, options);
+    if (typeof func !== 'function') throw 'callback function must be a function';
 
     return new ScheduledTask(expression, func, options);
 }

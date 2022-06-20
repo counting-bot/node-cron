@@ -28,7 +28,7 @@ npm install --save node-cron
 Import node-cron and schedule a task:
 
 ```javascript
-var cron = require('node-cron');
+const cron = require('node-cron');
 
 cron.schedule('* * * * *', () => {
   console.log('running a task every minute');
@@ -70,7 +70,7 @@ This is a quick reference to cron syntax and also shows the options supported by
 You may use multiples values separated by comma:
 
 ```javascript
-var cron = require('node-cron');
+const cron = require('node-cron');
 
 cron.schedule('1,2,4,5 * * * *', () => {
   console.log('running every minute 1, 2, 4 and 5');
@@ -82,7 +82,7 @@ cron.schedule('1,2,4,5 * * * *', () => {
 You may also define a range of values:
 
 ```javascript
-var cron = require('node-cron');
+const cron = require('node-cron');
 
 cron.schedule('1-5 * * * *', () => {
   console.log('running every minute to 1 from 5');
@@ -94,7 +94,7 @@ cron.schedule('1-5 * * * *', () => {
 Step values can be used in conjunction with ranges, following a range with '/' and a number. e.g: `1-10/2` that is the same as `2,4,6,8,10`. Steps are also permitted after an asterisk, so if you want to say “every two minutes”, just use `*/2`.
 
 ```javascript
-var cron = require('node-cron');
+const cron = require('node-cron');
 
 cron.schedule('*/2 * * * *', () => {
   console.log('running a task every two minutes');
@@ -106,7 +106,7 @@ cron.schedule('*/2 * * * *', () => {
 For month and week day you also may use names or short names. e.g:
 
 ```javascript
-var cron = require('node-cron');
+const cron = require('node-cron');
 
 cron.schedule('* * * January,September Sunday', () => {
   console.log('running on Sundays of January and September');
@@ -116,7 +116,7 @@ cron.schedule('* * * January,September Sunday', () => {
 Or with short names:
 
 ```javascript
-var cron = require('node-cron');
+const cron = require('node-cron');
 
 cron.schedule('* * * Jan,Sep Sun', () => {
   console.log('running on Sundays of January and September');
@@ -143,7 +143,7 @@ Arguments:
  **Example**:
 
  ```js
-  var cron = require('node-cron');
+  const cron = require('node-cron');
 
   cron.schedule('0 1 * * *', () => {
     console.log('Running a job at 01:00 at America/Sao_Paulo timezone');
@@ -160,9 +160,9 @@ Arguments:
 Starts the scheduled task.
 
 ```javascript
-var cron = require('node-cron');
+const cron = require('node-cron');
 
-var task = cron.schedule('* * * * *', () =>  {
+const task = cron.schedule('* * * * *', () =>  {
   console.log('stopped task');
 }, {
   scheduled: false
@@ -176,9 +176,9 @@ task.start();
 The task won't be executed unless re-started.
 
 ```javascript
-var cron = require('node-cron');
+const cron = require('node-cron');
 
-var task = cron.schedule('* * * * *', () =>  {
+const task = cron.schedule('* * * * *', () =>  {
   console.log('will execute every minute until stopped');
 });
 
@@ -190,10 +190,10 @@ task.stop();
 Validate that the given string is a valid cron expression.
 
 ```javascript
-var cron = require('node-cron');
+const cron = require('node-cron');
 
-var valid = cron.validate('59 * * * *');
-var invalid = cron.validate('60 * * * *');
+const valid = cron.validate('59 * * * *');
+const invalid = cron.validate('60 * * * *');
 ```
 
 ## Issues
