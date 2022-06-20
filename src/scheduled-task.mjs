@@ -1,9 +1,7 @@
-'use strict';
-
-const EventEmitter = require('events');
-const Task = require('./task');
-const Scheduler = require('./scheduler');
-const uuid = require('uuid');
+import EventEmitter from 'events';
+import Task from './task.mjs'
+import Scheduler from './scheduler.mjs'
+import uuid from './uuid/v4.mjs'
 
 class ScheduledTask extends EventEmitter {
     constructor(cronExpression, func, options) {
@@ -16,7 +14,7 @@ class ScheduledTask extends EventEmitter {
         }
       
         this.options = options;
-        this.options.name = this.options.name || uuid.v4();
+        this.options.name = this.options.name || uuid();
 
         this._task = new Task(func);
         this._scheduler = new Scheduler(cronExpression, options.timezone, options.recoverMissedExecutions);
@@ -48,4 +46,4 @@ class ScheduledTask extends EventEmitter {
     }
 }
 
-module.exports = ScheduledTask;
+export default ScheduledTask;

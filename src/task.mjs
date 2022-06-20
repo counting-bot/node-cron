@@ -1,6 +1,4 @@
-'use strict';
-
-const EventEmitter = require('events');
+import EventEmitter from 'events';
 
 class Task extends EventEmitter{
     constructor(execution){
@@ -30,5 +28,5 @@ class Task extends EventEmitter{
     }
 }
 
-module.exports = Task;
+export default Task
 

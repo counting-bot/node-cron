@@ -1,4 +1,5 @@
-module.exports = (() => {
+import uuid from './uuid/v4.mjs'
+export default (() => {
     if(!global.scheduledTasks){
         global.scheduledTasks = new Map();
     }
@@ -6,9 +7,8 @@ module.exports = (() => {
     return {
         save: (task) => {
             if(!task.options){
-                const uuid = require('uuid');
                 task.options = {};
-                task.options.name = uuid.v4();
+                task.options.name = uuid();
             }
             global.scheduledTasks.set(task.options.name, task);
         },
