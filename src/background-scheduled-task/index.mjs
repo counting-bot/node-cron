@@ -1,7 +1,7 @@
 import EventEmitter from 'events';
 import path from 'path';
+import {randomUUID} from 'crypto';
 import { fork } from 'child_process';
-import uuid from '../uuid/v4.mjs'
 
 const daemonPath = `./daemon.js`;
 
@@ -17,7 +17,7 @@ class BackgroundScheduledTask extends EventEmitter {
         this.cronExpression = cronExpression;
         this.taskPath = taskPath;
         this.options = options;
-        this.options.name = this.options.name || uuid();
+        this.options.name = this.options.name || randomUUID();
 
         if(options.scheduled){
             this.start();

@@ -1,7 +1,8 @@
 import EventEmitter from 'events';
+import {randomUUID} from 'crypto';
+
 import Task from './task.mjs'
 import Scheduler from './scheduler.mjs'
-import uuid from './uuid/v4.mjs'
 
 class ScheduledTask extends EventEmitter {
     constructor(cronExpression, func, options) {
@@ -14,7 +15,7 @@ class ScheduledTask extends EventEmitter {
         }
       
         this.options = options;
-        this.options.name = this.options.name || uuid();
+        this.options.name = this.options.name || randomUUID();
 
         this._task = new Task(func);
         this._scheduler = new Scheduler(cronExpression, options.timezone, options.recoverMissedExecutions);

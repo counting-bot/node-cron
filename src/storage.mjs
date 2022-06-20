@@ -1,4 +1,5 @@
-import uuid from './uuid/v4.mjs'
+import {randomUUID} from 'crypto';
+
 export default (() => {
     if(!global.scheduledTasks){
         global.scheduledTasks = new Map();
@@ -8,7 +9,7 @@ export default (() => {
         save: (task) => {
             if(!task.options){
                 task.options = {};
-                task.options.name = uuid();
+                task.options.name = randomUUID();
             }
             global.scheduledTasks.set(task.options.name, task);
         },
