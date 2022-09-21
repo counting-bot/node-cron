@@ -1,6 +1,8 @@
 import ScheduledTask from './scheduled-task.mjs'
 import storage from './storage.mjs'
 
+const taskStorage = new storage()
+
 /**
  * @typedef {Object} CronScheduleOptions
  * @prop {boolean} [scheduled] if a scheduled task is ready and running to be
@@ -22,7 +24,7 @@ import storage from './storage.mjs'
 
     const task = new ScheduledTask(expression, func, options);
 
-    storage.save(task);
+    taskStorage.save(task);
 
     return task;
 }

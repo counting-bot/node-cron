@@ -1,7 +1,7 @@
 import EventEmitter from 'events';
 import TimeMatcher from './time-matcher.mjs';
 
-class Scheduler extends EventEmitter{
+export default class Scheduler extends EventEmitter{
     constructor(pattern, timezone, autorecover){
         super();
         this.timeMatcher = new TimeMatcher(pattern, timezone);
@@ -43,5 +43,3 @@ class Scheduler extends EventEmitter{
         this.timeout = null;
     }
 }
-
-export default Scheduler

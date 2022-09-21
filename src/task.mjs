@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 
-class Task extends EventEmitter{
+export default class Task extends EventEmitter{
     constructor(execution){
         super();
         if(typeof execution !== 'function') {
@@ -27,6 +27,3 @@ class Task extends EventEmitter{
         }
     }
 }
-
-export default Task
-

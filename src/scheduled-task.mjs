@@ -4,7 +4,7 @@ import {randomUUID} from 'crypto';
 import Task from './task.mjs'
 import Scheduler from './scheduler.mjs'
 
-class ScheduledTask extends EventEmitter {
+export default class ScheduledTask extends EventEmitter {
     constructor(cronExpression, func, options) {
         super();
         if(!options){
@@ -46,5 +46,3 @@ class ScheduledTask extends EventEmitter {
         this._scheduler.stop();
     }
 }
-
-export default ScheduledTask;

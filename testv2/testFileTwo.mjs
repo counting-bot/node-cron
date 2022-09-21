@@ -1,8 +1,10 @@
 import {schedule} from '../src/node-cron.mjs'
-import test from './testFileTwo.mjs'
 
 schedule("* * * * *", ()=>{
-    console.log("eeee")
+    console.log("ttttttttttttttttttttttttttt")
     console.log(new Date().getMinutes())
 })
-test("asdf")
+
+export default (data)=>{
+    console.log(data)
+}
